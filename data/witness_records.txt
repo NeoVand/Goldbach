@@ -1,0 +1,29 @@
+record-setting even n and least witness p (n = p + prime):
+
+  n =          4   p =    2
+  n =          6   p =    3
+  n =         12   p =    5
+  n =         30   p =    7
+  n =         98   p =   19
+  n =        220   p =   23
+  n =        308   p =   31
+  n =        556   p =   47
+  n =        992   p =   73
+  n =      2,642   p =  103
+  n =      5,372   p =  139
+  n =      7,426   p =  173
+  n =     43,532   p =  211
+  n =     54,244   p =  233
+  n =     63,274   p =  293
+  n =    113,672   p =  313
+  n =    128,168   p =  331
+  n =    194,428   p =  359
+  n =    194,470   p =  383
+  n =    413,572   p =  389
+  n =    503,222   p =  523
+  n =  1,077,422   p =  601
+  n =  3,526,958   p =  727
+  n =  3,807,404   p =  751
+
+mean witness over all even n <= 10,000,000: 24.91
+99.99th percentile witness: 383

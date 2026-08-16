@@ -1,0 +1,14 @@
+primes up to N = 2^21 = 2,097,152; FFT size 2^23; arc half-width 16 bins = 16/2^23 of the circle; window n in [2^20, 1,845,493)
+
+major arcs Q = 64:
+  RMS of E(n)/sqrt(n)          : 38.23
+  max |E(n)| / main term       : 0.1037   (at n = 1,711,710)
+  mean |E(n)| / main term      : 0.0110
+  main term ~ S(n) n           : 2,894,070 (mean)
+
+reconstruction accuracy R_major vs exact R, correlation by level:
+  Q =   1: corr = 0.00016
+  Q =   3: corr = 0.91113
+  Q =   5: corr = 0.96643
+  Q =  15: corr = 0.99128
+  Q =  64: corr = 0.99916

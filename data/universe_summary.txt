@@ -1,0 +1,9 @@
+trials: 200,000; universes up to n = 1500
+largest n that ever failed (naive model) : 1152
+largest n that ever failed (parity model): 342
+
+expected number of Goldbach failures at ANY n > x (parity model, exp(-J(n)/2) tail):
+  x = 10^3 : 10^(-4.9)
+  x = 10^4 : 10^(-31.3)
+  x = 10^6 : 10^(-1,335.1)
+  x = 10^9 : 10^(-561,336.3)
