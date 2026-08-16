@@ -1,0 +1,93 @@
+{
+  "N": 20000000,
+  "x_min": 10000,
+  "frequency_resolution": 0.8264349345128315,
+  "matches": [
+    {
+      "zero": 14.134725141734693,
+      "peak_at": 14.049393886718136,
+      "offset": -0.08533125501655725,
+      "measured_amplitude": 0.019759820832221824,
+      "predicted_amplitude": 0.01989673913172039,
+      "control_amplitude_there": 0.012057988561141325
+    },
+    {
+      "zero": 21.022039638771556,
+      "peak_at": 20.660873362820784,
+      "offset": -0.36116627595077233,
+      "measured_amplitude": 0.007983476353741975,
+      "predicted_amplitude": 0.00902577942854615,
+      "control_amplitude_there": 0.02202136733359713
+    },
+    {
+      "zero": 25.01085758014569,
+      "peak_at": 24.793048035384942,
+      "offset": -0.21780954476074754,
+      "measured_amplitude": 0.0061528428599222935,
+      "predicted_amplitude": 0.006381700354947546,
+      "control_amplitude_there": 0.01170318281924281
+    },
+    {
+      "zero": 30.424876125859512,
+      "peak_at": 30.578092576974765,
+      "offset": 0.15321645111525228,
+      "measured_amplitude": 0.004209768422421439,
+      "predicted_amplitude": 0.0043153551602104325,
+      "control_amplitude_there": 0.005555891489229654
+    },
+    {
+      "zero": 32.93506158773919,
+      "peak_at": 33.05739738051326,
+      "offset": 0.12233579277406648,
+      "measured_amplitude": 0.003680195103795043,
+      "predicted_amplitude": 0.0036833503915021664,
+      "control_amplitude_there": 0.005329920106960443
+    },
+    {
+      "zero": 37.58617815882567,
+      "peak_at": 37.18957205307741,
+      "offset": -0.39660610574825483,
+      "measured_amplitude": 0.0024379107865076344,
+      "predicted_amplitude": 0.002828913463156547,
+      "control_amplitude_there": 0.0039164562640840814
+    },
+    {
+      "zero": 40.9187190121475,
+      "peak_at": 40.49531179112874,
+      "offset": -0.4234072210187563,
+      "measured_amplitude": 0.0020520547492708604,
+      "predicted_amplitude": 0.002387217025009307,
+      "control_amplitude_there": 0.002413661207086824
+    },
+    {
+      "zero": 43.327073280915,
+      "peak_at": 42.97461659466723,
+      "offset": -0.3524566862477698,
+      "measured_amplitude": 0.0018415713066453876,
+      "predicted_amplitude": 0.002129375519364291,
+      "control_amplitude_there": 0.0029801957361399547
+    },
+    {
+      "zero": 48.00515088116716,
+      "peak_at": 47.933226201744226,
+      "offset": -0.0719246794229349,
+      "measured_amplitude": 0.0017094088994679872,
+      "predicted_amplitude": 0.0017347977440228721,
+      "control_amplitude_there": 0.002618115342733612
+    },
+    {
+      "zero": 49.7738324776723,
+      "peak_at": 49.586096070769884,
+      "offset": -0.18773640690241677,
+      "measured_amplitude": 0.001596746217492702,
+      "predicted_amplitude": 0.0016137594307324785,
+      "control_amplitude_there": 0.001925722654948176
+    }
+  ],
+  "mean_abs_offset_first5": 0.18797186392347917,
+  "template_stat_at_zero_shift": 4.816452043327722,
+  "template_shift_p_value": 0.0,
+  "primes_noise_floor_10_60": 0.00015712903059925676,
+  "gamma1_snr_vs_own_floor": 125.7553792374462,
+  "control_band_amplitude_10_60_median": 0.003734858072312455
+}

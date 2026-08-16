@@ -104,6 +104,28 @@ def test_spectrum_peaks():
     assert generic < 0.01 * n_primes
 
 
+def test_weighted_counts():
+    from goldbach.weighted import mangoldt, weighted_counts
+    n_max = 800
+    lam = mangoldt(n_max)
+    # Spot-check Lambda itself.
+    assert abs(lam[8] - np.log(2)) < 1e-14   # 2^3
+    assert abs(lam[729] - np.log(3)) < 1e-14  # 3^6
+    assert lam[12] == 0.0 and lam[1] == 0.0
+    g = weighted_counts(lam)
+    for n in (10, 100, 501, 800):
+        brute = sum(lam[a] * lam[n - a] for a in range(2, n - 1))
+        assert abs(g[n] - brute) < 1e-8, f"weighted mismatch at n={n}"
+
+
+def test_predicted_amplitudes():
+    from goldbach.weighted import ZETA_ZEROS, predicted_amplitudes
+    amps = predicted_amplitudes()
+    rho1 = 0.5 + 1j * ZETA_ZEROS[0]
+    assert abs(amps[0] - 4.0 / abs(rho1 * (rho1 + 1))) < 1e-15
+    assert (np.diff(amps) < 0).all()  # higher zeros ring quieter
+
+
 if __name__ == "__main__":
     for name, fn in sorted(globals().items()):
         if name.startswith("test_"):

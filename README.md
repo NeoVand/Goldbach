@@ -98,6 +98,22 @@ away from zero like n/ln²n. This is evidence about *why the conjecture is
 believed* — and simultaneously a demonstration of why computation alone can
 never finish the job: no finite floor stops a single distant exception.
 
+### 7. The Riemann zeros, heard through Goldbach
+
+![The Riemann zeros, heard through Goldbach](figures/07_riemann_zeros.png)
+
+The deepest experiment (`experiments/riemann_zeros.py`): weight the primes
+the way the zeta function does (von Mangoldt), cumulate the Goldbach counts,
+subtract the main term X²/2, rescale by X^(3/2) — and the residue is not
+noise. Its periodogram in log X shows sharp tones at **14.13, 21.02, 25.01,
+30.42, 32.94, …** — the imaginary parts of the Riemann zeta zeros — with
+amplitudes matching Fujii's RH-conditional explicit formula to ~1% at the
+first and fifth zeros. A Cramér random "fake prime" control of identical
+density is ~10× *louder* and tone-deaf: no alignment with any zero, p = 0
+under a template-shift test. The primes are quieter than chance, and what
+remains of their sound is precisely the zeros of ζ. Details and honest
+novelty assessment in [RESEARCH_LOG.md](RESEARCH_LOG.md).
+
 ## Headline numbers (N = 20,000,000, full run ≈ 23 s)
 
 | Quantity | Value |
