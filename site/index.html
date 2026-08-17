@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goldbach: instruments, not incantations</title>
+<style>
+  :root {
+    --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --ink2: #52514e;
+    --muted: #898781; --hairline: #e1e0d9; --blue: #2a78d6; --orange: #eb6834;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--page); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6; padding: 0 20px 80px;
+  }
+  main { max-width: 900px; margin: 0 auto; }
+  header { padding: 64px 0 8px; }
+  h1 { font-size: 2.1rem; letter-spacing: -0.02em; }
+  .tagline { color: var(--ink2); font-size: 1.05rem; margin-top: 8px; }
+  .banner {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-left: 4px solid var(--orange); border-radius: 8px;
+    padding: 14px 18px; margin: 26px 0 8px; color: var(--ink2);
+  }
+  .banner strong { color: var(--ink); }
+  section { margin-top: 52px; }
+  h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
+  .kicker {
+    color: var(--muted); font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.09em; margin-bottom: 4px;
+  }
+  p { color: var(--ink2); margin-top: 10px; }
+  p strong, p code { color: var(--ink); }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.9em; background: var(--surface);
+    border: 1px solid var(--hairline); border-radius: 4px; padding: 1px 5px;
+  }
+  figure {
+    margin-top: 18px; background: var(--surface);
+    border: 1px solid var(--hairline); border-radius: 10px; padding: 10px;
+  }
+  figure img { max-width: 100%; height: auto; display: block; border-radius: 6px; }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px; margin-top: 18px;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .stat .value { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+  .stat .label { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  footer {
+    margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--hairline);
+    color: var(--muted); font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Goldbach: instruments, not incantations</h1>
+    <p class="tagline">Fast tools for measuring the structure of the Goldbach
+    conjecture — every claim labeled <em>theorem</em>, <em>heuristic</em>, or
+    <em>measurement</em>.</p>
+    <div class="banner">
+      <strong>This project does not prove the Goldbach conjecture. Nobody
+      has.</strong> Every even number greater than 2 appears to be a sum of two
+      primes — verified by others to 4·10<sup>18</sup>, proven for no infinite
+      range of even numbers at all. What follows is what honest experiments can
+      say, and one FFT can say a lot.
+    </div>
+  </header>
+
+  <section>
+    <p class="kicker">The instrument</p>
+    <h2>One FFT photographs every Goldbach count at once</h2>
+    <p>The number of ways to write n as a sum of two primes is the
+    autocorrelation of the prime indicator, so a single FFT computes all ten
+    million counts up to N&nbsp;=&nbsp;20,000,000 in seconds — exactly (worst
+    floating-point residual 1.7·10<sup>−10</sup> against an exactness threshold
+    of 0.5, unit-tested against brute force). It is the circle method made
+    executable: the FFT of the primes <em>is</em> the exponential sum S(α), and
+    the counts are the inverse transform of its power spectrum.</p>
+    <div class="stats">
+      <div class="stat"><div class="value">2·10⁷</div>
+        <div class="label">every even n verified to have a partition</div></div>
+      <div class="stat"><div class="value">3,963</div>
+        <div class="label">fewest partitions of any even n ≥ 10⁶</div></div>
+      <div class="stat"><div class="value">0.9992</div>
+        <div class="label">median measured/predicted ratio, n ≥ 10⁶</div></div>
+      <div class="stat"><div class="value">≈ 23 s</div>
+        <div class="label">full experiment suite runtime</div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 1</p>
+    <h2>The comet's bands are arithmetic, not chaos</h2>
+    <p>Partition counts fan into separated bands. Color by the small prime
+    factors of n and the mystery dissolves: n divisible by 3 has roughly twice
+    the partitions, because n&nbsp;−&nbsp;p then dodges one residue class of
+    collisions.</p>
+    <figure><img src="figures/01_comet.png" alt="The Goldbach comet, colored by divisibility of n"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 2</p>
+    <h2>One division collapses the comet</h2>
+    <p>Divide each count by its singular series S(n) — Hardy and Littlewood's
+    1923 arithmetic correction — and every band merges onto the single smooth
+    curve 2·C₂·Li₂(n). Nothing about the comet's shape is left unexplained.</p>
+    <figure><img src="figures/02_comet_collapsed.png" alt="The comet collapsed by the singular series"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 3</p>
+    <h2>The 1923 prediction calibrates to 1%</h2>
+    <p>Measured over predicted, for every even n to 2·10⁷: the median ratio at
+    the top of the range is 0.9992, and 98% of even numbers land within
+    [0.990,&nbsp;1.007]. The envelope tightens exactly at the square-root rate
+    the model itself expects.</p>
+    <figure><img src="figures/03_hl_ratio.png" alt="Ratio of measured to predicted counts tightening onto 1"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 4</p>
+    <h2>The power spectrum of the primes</h2>
+    <p>|S(α)| measured exactly on a 720,720-point grid: spikes at every
+    rational a/q with the predicted height |μ(q)|/φ(q) — present only for
+    squarefree q (no spike at 1/4 or 1/9, as the Möbius factor demands), over a
+    square-root-cancellation noise floor. The spikes are what proves Goldbach's
+    main term; the floor is what nobody can control for the binary problem. The
+    entire difficulty of the conjecture is visible in this one image.</p>
+    <figure><img src="figures/04_prime_spectrum.png" alt="Power spectrum of the primes with labeled major-arc spikes"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 5</p>
+    <h2>How stubborn can an even number be?</h2>
+    <p>p<sub>min</sub>(n) is the smallest prime that splits n. Up to 2·10⁷ the
+    all-time record is 829, at n&nbsp;=&nbsp;10,759,922 — an eight-digit number
+    split by a three-digit prime. Records track (ln&nbsp;n)²·ln&nbsp;ln&nbsp;n,
+    and the list reproduces OEIS A025018/A025019.</p>
+    <figure><img src="figures/05_minimal_prime.png" alt="Minimal Goldbach primes and their records"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 6</p>
+    <h2>The floor keeps rising</h2>
+    <p>Per dyadic window, the weakest even number's count rides the predicted
+    minimum — within 1.2% at the top window, with 49,382 representations for
+    the worst case. Evidence for belief, and simultaneously a demonstration
+    that computation alone can never finish the job.</p>
+    <figure><img src="figures/06_worst_case.png" alt="Worst-case counts per dyadic window vs the predicted floor"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Experiment 7</p>
+    <h2>The Riemann zeros, heard through Goldbach</h2>
+    <p>Weight the primes the way ζ does, cumulate the Goldbach counts, subtract
+    the main term X²/2, rescale — and the residue is not noise. Its periodogram
+    in log&nbsp;X shows tones at <strong>14.13, 21.02, 25.01, 30.42,
+    32.94…</strong> — the imaginary parts of the Riemann zeta zeros — with
+    amplitudes matching Fujii's explicit formula to ~1% at the first and fifth
+    zeros (template-shift significance test: empirical p&nbsp;=&nbsp;0). A
+    random "fake primes" control of identical density is ten times
+    <em>louder</em> and tone-deaf. The primes are quieter than chance, and what
+    remains of their sound is precisely the zeros of ζ:
+    <strong>the Goldbach error term is not noise — it is music.</strong></p>
+    <figure><img src="figures/07_riemann_zeros.png" alt="Periodogram of the Goldbach deviation showing peaks at the Riemann zeros"></figure>
+  </section>
+
+  <section>
+    <p class="kicker">Honesty</p>
+    <h2>What this does and doesn't establish</h2>
+    <p>Everything measured behaves exactly as the Hardy–Littlewood model
+    predicts, within fluctuations the model itself anticipates. That is strong
+    evidence the conjecture is <em>true</em>, and zero progress toward
+    <em>proving</em> it — those are different things. The precise walls (the
+    L² barrier on the minor arcs, the parity barrier for sieves) are mapped in
+    <a href="https://github.com/NeoVand/Goldbach/blob/main/THEORY.md">THEORY.md</a>;
+    the ongoing hypothesis hunt lives in
+    <a href="https://github.com/NeoVand/Goldbach/blob/main/RESEARCH_LOG.md">RESEARCH_LOG.md</a>.</p>
+  </section>
+
+  <footer>
+    <p>Code, tests, and reproduction instructions:
+    <a href="https://github.com/NeoVand/Goldbach">github.com/NeoVand/Goldbach</a>
+    — <code>python experiments/run_all.py</code> regenerates every figure.</p>
+  </footer>
+</main>
+</body>
+</html>
